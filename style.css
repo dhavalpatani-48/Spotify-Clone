@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+   
+}
+
+
+
+
+.left{
+    width: 25vw;
+    padding: 10px ;
+}
+
+.right{
+    width: 75vw;
+}
+
+
+   
+.home ul li{
+    width: 20px;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding-top: 14px ;
+    font-weight: bold;
+
+}
+
+
+.bg-black{
+    background-color: black;
+    color: white;
+}
+
+.playlist{
+    display: grid;
+   
+}
+
+
+.btn{
+    background-color: #0bcb4ead;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+        width: 200px;
+}
+
+.pd-1{
+    padding: 10px;
+    margin: 10px 0px 0px 0px;
+}
+.bgm{
+    background-color:black;
+}
