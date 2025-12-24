@@ -1,42 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>spotify</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="utility.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utility.css" />
+  </head>
+  <body>
 
-<body>
-  <div class="container flex bg-black">
-     <div class="left border ">
-        
-    <div class="home bg-grey rounded m-1 p-1 " >
-            <div class="logo"><img class="invert" src="logo.svg" alt="spotify"></div>
-            <ul>
-                <li><img class="invert" src="home.svg" alt="Home">Home</li>
-                <li><img class="invert" src="search.svg" alt="home" style="width: 20px;">Search</li>
-            </ul>
 
-               
-             <div class="library  rounded  playlist pd-1 bgm">
+    <nav class="spotify-navbar">
 
-            <h3 class="m-1 p-1">Create your first playlist</h3>
-            <h4 class="">it's easy, we'll help you</h4>
+      <!-- LEFT -->
+
+      <div class="nav-left">
+        <div class="logo" onclick="goHome()">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+            alt="Spotify"
+          />
+        </div>
+
+        <button class="icon-btn" onclick="goHome()" title="Home">🏠</button>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="What do you want to play?" />
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="nav-right">
+        <a onclick="goPremium()">Premium</a>
+        <a onclick="goSupport()">Support</a>
+        <a onclick="goDownload()">Download</a>
+
+        <span class="divider"></span>
+
+        <button class="install-btn" onclick="installApp()">
+          ⬇ Install App
+        </button>
+        <a onclick="signUp()">Sign up</a>
+        <button class="login-btn" onclick="login()">Log in</button>
+      </div>
+    </nav>
+
+    <!-- left box -->
+
+    <div class="container flex bg-black">
+      <div class="left border">
+        <div class="home bg-grey rounded m-1 p-1 a b">
+          <h3 class="m-1 p-1 cc">Your Playlist</h3>
+
+          <div class="library rounded playlist pd-1 bgm l li">
+            <h3 class="m-1 p-1 cc">Create your first playlist</h3>
+            <h4 class="ss">it's easy, we'll help you</h4>
             <button class="btn">Create playlist</button>
-        </div>
+          </div>
 
-        <div class="library rounded  playlist pd-1 bgm">
-            <h3 class="m-1 p-1">Let's find some podcast to follow</h3>
-            <h4 class="">we'll keep you updated on new episode</h4>
+          <div class="library rounded playlist pd-1 bgm l li">
+            <h3 class="m-1 p-1 cc">Let's find some podcast to follow</h3>
+            <h4 class="ss">we'll keep you updated on new episode</h4>
             <button class="btn">Browse podcast</button>
+          </div>
+
+          <footer class="site-footer">
+            <div class="footer-container">
+              <div class="footer-links">
+                <a href="#">Legal</a>
+                <a href="#">Safety & Privacy Center</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookies</a>
+                <a href="#">About Ads</a>
+                <a href="#">Accessibility</a>
+              </div>
+
+              <div class="footer-title">Cookies</div>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <!-- RIGHT box -->
+
+      <div class="right border">
+        <section class="music-section">
+
+          <!-- TRENDING SONGS -->
+
+          <div class="section-header">
+            <h2>Trending songs</h2>
+            <span class="show-all">Show all</span>
+          </div>
+
+          <div class="card-row">
+            <div class="song-card" onclick="openModal(this)">
+              <img
+                src="images\Dhurandhar-2025-8-2025-12-98299f6dee70b4bb00ea912155cdf1b5.webp"
+              />
+              <button class="play-btn" onclick="playOnly(event)">▶</button>
+              <h4>Gehra Hua</h4>
+              <p>Shashwat Sachdev, Arijit Singh</p>
+            </div>
+
+            <div class="song-card" onclick="openModal(this)">
+              <img
+                src="images\Dhurandhar-2025-8-2025-12-98299f6dee70b4bb00ea912155cdf1b5.webp"
+              />
+              <button class="play-btn" onclick="playOnly(event)">▶</button>
+              <h4>Seet Lehar</h4>
+              <p>Filmy, Riyaazi</p>
+            </div>
+
+            <div class="song-card" onclick="openModal(this)">
+              <img
+                src="images\MV5BMTNmNjM0OTktNmQ5NC00MWY1LWE4MDEtYWM0MjU4M2U0NTdiXkEyXkFqcGc@._V1_.jpg"
+              />
+              <button class="play-btn" onclick="playOnly(event)">▶</button>
+              <h4>Sitaare</h4>
+              <p>Arijit Singh</p>
+            </div>
+
+            <div class="song-card" onclick="openModal(this)">
+              <img src="images\Dhurandhar-751x1024.jpeg" />
+              <button class="play-btn" onclick="playOnly(event)">▶</button>
+              <h4>Pal Pal</h4>
+              <p>Talwinder</p>
+            </div>
+          </div>
+
+          <!-- POPULAR ARTISTS -->
+
+          <div class="section-header mt">
+            <h2>Popular artists</h2>
+            <span class="show-all">Show all</span>
+          </div>
+
+          <div class="artist-row">
+            <div class="artist-card" onclick="openModal(this)">
+              <img src="images\download.jpg" />
+              <p>Arijit Singh</p>
+            </div>
+
+            <div class="artist-card" onclick="openModal(this)">
+              <img src="images\download (1).jpg" />
+              <p>Shreya Ghoshal</p>
+            </div>
+
+            <div class="artist-card" onclick="openModal(this)">
+              <img src="images\download (2).jpg" />
+              <p>Yo Yo honey Singh</p>
+            </div>
+
+              <div class="artist-row">
+            <div class="artist-card" onclick="openModal(this)">
+              <img src="images\kumar.jpg" />
+              <p>kumar sanu</p>
+            </div>
+
+            <div class="artist-card" onclick="openModal(this)">
+              <img src="images\download (3).jpg" />
+              <p>AP dhillon</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL -->
+
+        <div class="preview-modal" id="previewModal">
+          <span class="close" onclick="closeModal()">✕</span>
+          <img id="modalImg" />
+          <h3 id="modalTitle"></h3>
         </div>
 
+        <!-- AUDIO -->
+
+        <audio id="audioPlayer"></audio>
+
+        <!-- PLAYBAR -->
+
+        <div class="playbar">
+          <div class="playbar-left">
+            <img id="barImg" src="images/default.jpg" />
+            <div>
+              <h4 id="barTitle">No song selected</h4>
+              <p id="barArtist">—</p>
+            </div>
+          </div>
+
+          <div class="playbar-center">
+            <div class="controls">
+              <button>⏮</button>
+              <button id="playBtn" onclick="togglePlay()">▶</button>
+              <button>⏭</button>
+            </div>
+
+            <div class="progress">
+              <span id="currentTime">0:00</span>
+              <input type="range" id="seekBar" value="0" />
+              <span id="duration">0:00</span>
+            </div>
+          </div>
+
+          <div class="playbar-right">
+            <button onclick="mute()">🔊</button>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              onchange="setVolume(this.value)"/>
+          
+          </div>
         </div>
-       
+      </div>
     </div>
-     <div class="right border">tyjktyuklkhjljkljklkjlkjl</div>
-  </div>
-</body>
+
+    <!-- script file link-->
+
+    <script src="script.js"></script>
+  </body>
 </html>
