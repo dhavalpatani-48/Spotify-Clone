@@ -529,13 +529,13 @@ body {
 
 
 .songlist ul{
-    padding: 0 42px;
+    padding: 0 22px;
     margin-top: 25px;
     margin-left: -28px;
 }
 
 .songlist ul li{
-    width: 250px;
+    width: 300px;
     list-style-type:decimal;
     font-size: 16px;
     gap: 30px;
@@ -546,10 +546,14 @@ body {
     margin: 12px;
     padding: 13px;
     border-radius: 5px;
+     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
 .songlist{
     height: 344px;
     overflow: auto;
+    margin-top: 25px;
 }

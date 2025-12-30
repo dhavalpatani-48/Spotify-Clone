@@ -189,8 +189,8 @@ async function main (){
         // add li
         songUL.innerHTML += `<li><img class="musiclogo" src="music.svg" alt="">
                              <div class="musiclogo">
-                              <div>${filename}</div>
-                              <div>dhaval</div>
+                              <div class="wi">${filename}</div>
+                              <div class="wi">dhaval</div>
                             </div>
                             <img class="playlogo" src="play.svg" alt="">
                         </li>`;

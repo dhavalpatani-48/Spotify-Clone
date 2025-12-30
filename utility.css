@@ -67,21 +67,25 @@
   }
 
 
- /* .wi{
+.wi{
     width: 120px;
      margin-left: -25px;
-  }     */
+     display: flex;
+      white-space: nowrap;
+    overflow: hidden;
+     
+  }     
 
   .playlogo{
     width: 40px;
    
-    margin-left: 37px;
+    margin-left: 97px;
   }
 
 
   
 .musiclogo{
     width: 40px;
-    
+      flex-shrink: 0;
     gap: 34px;
 }
