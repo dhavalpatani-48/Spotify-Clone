@@ -1,4 +1,4 @@
- 
+
 const audio = document.getElementById("audioPlayer");
 const playBtn = document.getElementById("playBtn");
 const seekBar = document.getElementById("seekBar");
@@ -61,7 +61,7 @@ function formatTime(time) {
 
 
 
-    function openModal(card) {
+function openModal(card) {
     const img = card.querySelector("img").src;
     const title = card.querySelector("h4, p")?.innerText || "Preview";
 
@@ -139,3 +139,78 @@ function login() {
 }
 
 
+
+
+
+let currentsong= new Audio();
+async function getsongs() {
+       // fetch the songs from the server     
+    let a = await fetch("http://127.0.0.1:3000/songs/");
+    let response = await a.text();
+
+    let div = document.createElement('div');
+    div.innerHTML = response;
+
+    let as = div.getElementsByTagName("a")
+    let songs = [];
+
+    for (let i = 0; i < as.length; i++) {
+        if (as[i].href.endsWith(".mp3")) {
+            songs.push(as[i].href);
+        }
+    }
+    return songs;
+}
+
+const playmusic = (track) => {
+   // let audio = new Audio("/songs/" + track);
+    currentsong.src = "/songs/" + track
+    currentsong.play();
+}
+async function main (){ 
+
+  
+
+  //get the list of all he songs
+    let songs = await getsongs();
+
+    //show all the song in the playlist
+    let songUL = document
+        .querySelector(".songlist ul");
+
+    for (const song of songs) {
+
+             // decode link
+        let decoded = decodeURI(song);
+
+        // get only the filename (works for / and \ )
+        let filename = decoded.split(/[\\/]/).pop();
+
+        // add li
+        songUL.innerHTML += `<li><img class="musiclogo" src="music.svg" alt="">
+                             <div class="musiclogo">
+                              <div>${filename}</div>
+                              <div>dhaval</div>
+                            </div>
+                            <img class="playlogo" src="play.svg" alt="">
+                        </li>`;
+    
+    }
+
+    let audio = new Audio(songs[0]);
+
+     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e=>{
+        e.addEventListener("click",Element=>{
+        console.log(e.getElementsByTagName("div")[0].firstElementChild.innerHTML)
+        playmusic(e.getElementsByTagName("div")[0].firstElementChild.innerHTML);
+               
+    })
+
+
+
+    })
+
+} 
+
+
+main();

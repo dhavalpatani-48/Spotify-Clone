@@ -28,7 +28,7 @@
     border-radius: 7px;
 }
 .m-1{
-    margin: 20px;
+    margin: -12px;
 }
 
 .p-1{
@@ -41,8 +41,9 @@
 }
 
  .ss{
-    margin-top: -13px;
+    
     margin-left: 10px;
+    padding: 5px;
  }
 
  .l{
@@ -53,7 +54,7 @@
   }
 
   .b{
-    height: 48vw;
+    height: 51vw;
   }
 
   .li{
@@ -63,5 +64,24 @@
   .tt{
     font-size: 200%;
     
-    
   }
+
+
+ /* .wi{
+    width: 120px;
+     margin-left: -25px;
+  }     */
+
+  .playlogo{
+    width: 40px;
+   
+    margin-left: 37px;
+  }
+
+
+  
+.musiclogo{
+    width: 40px;
+    
+    gap: 34px;
+}

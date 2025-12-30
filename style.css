@@ -13,13 +13,13 @@
 
 
 .left{
-    width: 30vw;
+    width: 25vw;
     padding: 10px ;
     height: 45vw;
 }
 
 .right{
-    width: 70vw;
+    width: 75vw;
     height: 50vw;
 }
 
@@ -48,7 +48,7 @@
 
 
 .btn{
-    background-color: #0bcb4ead;
+    background-color: hsla(141, 90%, 42%, 0.678);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -57,6 +57,7 @@
     cursor: pointer;
     width: 200px;
     margin-top: 34px;
+    margin-left: 50px;
 
 }
 
@@ -281,7 +282,7 @@ body {
 .song-card {
     width: 180px;
     background: #181818;
-    padding: 14px;
+    padding: 5px;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.3s, background 0.3s;
@@ -430,7 +431,7 @@ body {
 /* SONG CARDS */
 .card-row {
     display: flex;
-    gap: 20px;
+    gap: 32px;
     padding: 30px;
 }
 
@@ -522,4 +523,33 @@ body {
     align-items: center;
     gap: 10px;
     
+}
+
+
+
+
+.songlist ul{
+    padding: 0 42px;
+    margin-top: 25px;
+    margin-left: -28px;
+}
+
+.songlist ul li{
+    width: 250px;
+    list-style-type:decimal;
+    font-size: 16px;
+    gap: 30px;
+    display: flex;
+    cursor: pointer;
+    padding: 12px 0;
+    border: 1px solid white;
+    margin: 12px;
+    padding: 13px;
+    border-radius: 5px;
+
+}
+
+.songlist{
+    height: 344px;
+    overflow: auto;
 }
