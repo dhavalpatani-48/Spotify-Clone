@@ -142,9 +142,9 @@ function login() {
 
 
 
-let currentsong= new Audio();
+
 async function getsongs() {
-       // fetch the songs from the server     
+    // fetch the songs from the server     
     let a = await fetch("http://127.0.0.1:3000/songs/");
     let response = await a.text();
 
@@ -163,15 +163,16 @@ async function getsongs() {
 }
 
 const playmusic = (track) => {
-   // let audio = new Audio("/songs/" + track);
+    // let audio = new Audio("/songs/" + track);
     currentsong.src = "/songs/" + track
     currentsong.play();
+     playBtn.src = "pause.svg";
 }
-async function main (){ 
+async function main() {
 
-  
 
-  //get the list of all he songs
+
+    //get the list of all he songs
     let songs = await getsongs();
 
     //show all the song in the playlist
@@ -180,7 +181,7 @@ async function main (){
 
     for (const song of songs) {
 
-             // decode link
+        // decode link
         let decoded = decodeURI(song);
 
         // get only the filename (works for / and \ )
@@ -194,23 +195,65 @@ async function main (){
                             </div>
                             <img class="playlogo" src="play.svg" alt="">
                         </li>`;
-    
+
     }
 
-    let audio = new Audio(songs[0]);
+   
+    // add event listener to each li
+    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", Element => {
+            console.log(e.getElementsByTagName("div")[0].firstElementChild.innerHTML)
+            playmusic(e.getElementsByTagName("div")[0].firstElementChild.innerHTML);
 
-     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e=>{
-        e.addEventListener("click",Element=>{
-        console.log(e.getElementsByTagName("div")[0].firstElementChild.innerHTML)
-        playmusic(e.getElementsByTagName("div")[0].firstElementChild.innerHTML);
-               
+        })
+
+
+
     })
 
+    // add event listener to play and pause button
+ const audio = document.getElementById("audioPlayer");
+const playBtn = document.querySelector(".play");
 
 
-    })
+// PLAY / PAUSE BUTTON
+playBtn.addEventListener("click", () => {
 
-} 
+  if (!audio.src) return;   // no song loaded yet
+
+  if (audio.paused) {
+    audio.play();
+    playBtn.src = "pause.svg";
+  } else {
+    audio.pause();
+    playBtn.src = "play.svg";
+  }
+});
+
+
+// CLICK SONG TO LOAD + PLAY
+Array.from(document.querySelectorAll(".songlist li")).forEach(li => {
+
+  li.addEventListener("click", () => {
+
+    let filename =
+      li.getElementsByTagName("div")[0]
+        .firstElementChild.innerHTML.trim();
+
+    audio.src = "/songs/" + filename;
+
+    audio.play();
+    playBtn.src = "pause.svg";
+  });
+
+});
+
+
+
+
+
+
+}
 
 
 main();
