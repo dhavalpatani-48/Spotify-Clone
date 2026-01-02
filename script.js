@@ -5,19 +5,7 @@ const seekBar = document.getElementById("seekBar");
 const currentTimeEl = document.getElementById("currentTime");
 const durationEl = document.getElementById("duration");
 
-function openSong(card) {
-    const img = card.querySelector("img").src;
-    const title = card.querySelector("h4").innerText;
-    const artist = card.querySelector("p").innerText;
 
-    document.getElementById("barImg").src = img;
-    document.getElementById("barTitle").innerText = title;
-    document.getElementById("barArtist").innerText = artist;
-
-    audio.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
-    audio.play();
-    playBtn.innerText = "⏸";
-}
 
 function togglePlay() {
     if (!audio.src) return;
@@ -56,56 +44,6 @@ function formatTime(time) {
     const s = Math.floor(time % 60);
     return `${m}:${s < 10 ? "0" : ""}${s}`;
 }
-
-
-
-
-
-function openModal(card) {
-    const img = card.querySelector("img").src;
-    const title = card.querySelector("h4, p")?.innerText || "Preview";
-
-    document.getElementById("previewModal").style.display = "flex";
-    document.getElementById("modalImg").src = img;
-    document.getElementById("modalTitle").innerText = title;
-}
-
-function closeModal() {
-    document.getElementById("previewModal").style.display = "none";
-}
-
-
-
-
-
-
-
-
-function playOnly(e) {
-    e.stopPropagation();   // ❌ stop modal opening
-    alert("▶ Play song");
-}
-
-function openModal(card) {
-    const img = card.querySelector("img").src;
-    const title = card.querySelector("h4")?.innerText || "Preview";
-
-    document.getElementById("previewModal").style.display = "flex";
-    document.getElementById("modalImg").src = img;
-    document.getElementById("modalTitle").innerText = title;
-}
-
-function closeModal() {
-    document.getElementById("previewModal").style.display = "none";
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -162,21 +100,28 @@ async function getsongs() {
     return songs;
 }
 
-const playmusic = (track) => {
-    // let audio = new Audio("/songs/" + track);
+
+const playMusic = (track) => {
+   
     currentsong.src = "/songs/" + track
-    currentsong.play();
-    playBtn.src = "pause.svg";
+    currentsong.play()
+    playBtn.src = "pause.svg"
+    
+    
+   document.getElementById("barTitle").innerHTML = track
+   
+
 }
+
 async function main() {
 
 
 
     //get the list of all he songs
     let songs = [
-        "songs/Lutt Le Gaya Dhurandhar 320 Kbps.mp3",
-        "songs/Title Track Dhurandhar 320 Kbps.mp3",
-        "songs/Ishq Jalakar Dhurandhar 320 Kbps.mp3",
+        "songs/Lutt Le Gaya Dhurandhar.mp3",
+        "songs/Title Track Dhurandhar.mp3",
+        "songs/Ishq Jalakar Dhurandhar.mp3",
         "songs/Don Omar - Danza Kuduro.mp3",
         "songs/A Aa 2 Bgm.mp3",
         "songs/Desabafo.mp3",
@@ -218,8 +163,7 @@ async function main() {
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", Element => {
             console.log(e.getElementsByTagName("div")[0].firstElementChild.innerHTML)
-            playmusic(e.getElementsByTagName("div")[0].firstElementChild.innerHTML);
-
+           
         })
 
 
@@ -247,22 +191,25 @@ async function main() {
 
 
     // CLICK SONG TO LOAD + PLAY
-    Array.from(document.querySelectorAll(".songlist li")).forEach(li => {
+ Array.from(document.querySelectorAll(".songlist li")).forEach(li => {
 
-        li.addEventListener("click", () => {
+    li.addEventListener("click", () => {
 
-            let filename =
-                li.getElementsByTagName("div")[0]
-                    .firstElementChild.innerHTML.trim();
+        let filename =
+            li.getElementsByTagName("div")[0]
+              .firstElementChild.innerHTML.trim();
 
-            audio.src = "/songs/" + filename;
+        audio.src = "/songs/" + filename;
+        audio.play();
+        playBtn.src = "pause.svg";
 
-            audio.play();
-            playBtn.src = "pause.svg";
-        });
-
+        document.getElementById("barTitle").textContent =
+            filename.replace(".mp3","");
     });
 
+});
+
+     
 
 
 

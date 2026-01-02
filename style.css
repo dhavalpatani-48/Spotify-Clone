@@ -13,13 +13,13 @@
 
 
 .left{
-    width: 25vw;
+    width: 25%;
     padding: 10px ;
     height: 45vw;
 }
 
 .right{
-    width: 75vw;
+    width: 75%;
     height: 50vw;
 }
 
@@ -549,6 +549,8 @@ body {
      white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+     align-items: center;
+    justify-content: space-between;
 
 }
 
@@ -576,3 +578,96 @@ body {
     height: 30px;
     cursor: pointer;
 }
+
+
+@media (max-width: 1024px){
+
+  .container{
+    display:flex;
+    gap:10px;
+  }
+
+  .left{
+    width:30%;
+  }
+
+  .right{
+    width:70%;
+  }
+
+  .card-row,
+  .artist-row{
+    gap:16px;
+  }
+}
+
+
+
+
+
+@media (max-width: 768px){
+
+  /* STACK LAYOUT */
+  .container{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .left,
+  .right{
+    width:100%;
+    height:auto;
+  }
+
+  /* REMOVE HEIGHT LOCKS */
+  .b{
+    height:auto !important;
+  }
+
+  /* PLAYLIST ITEMS */
+  .songlist ul li{
+    width:100%;
+    font-size:14px;
+  }
+
+  /* TRENDING CARDS — HORIZONTAL SCROLL */
+  .card-row{
+    display:flex;
+    overflow-x:auto;
+    gap:14px;
+    padding-bottom:10px;
+  }
+
+  .song-card{
+    min-width:150px;
+    flex-shrink:0;
+  }
+
+  /* ARTISTS — HORIZONTAL SCROLL */
+  .artist-row{
+    display:flex;
+    overflow-x:auto;
+    gap:18px;
+  }
+
+  .artist-card{
+    flex-shrink:0;
+  }
+
+  /* NAVBAR ADJUST */
+  .spotify-navbar{
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .nav-left,
+  .nav-right{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .music-section{
+    padding:12px;
+  }
+}
+
