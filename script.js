@@ -173,8 +173,10 @@ async function main() {
 
 
     //get the list of all he songs
-    let songs = await getsongs();
-
+   let songs = [
+  "songs/Don Omar - Danza Kuduro.mp3",
+  "songs/A Aa 2 Bgm.mp3",
+];
     //show all the song in the playlist
     let songUL = document
         .querySelector(".songlist ul");
