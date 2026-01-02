@@ -166,17 +166,30 @@ const playmusic = (track) => {
     // let audio = new Audio("/songs/" + track);
     currentsong.src = "/songs/" + track
     currentsong.play();
-     playBtn.src = "pause.svg";
+    playBtn.src = "pause.svg";
 }
 async function main() {
 
 
 
     //get the list of all he songs
-   let songs = [
-  "songs/Don Omar - Danza Kuduro.mp3",
-  "songs/A Aa 2 Bgm.mp3",
-];
+    let songs = [
+        "songs/Lutt Le Gaya Dhurandhar 320 Kbps.mp3",
+        "songs/Title Track Dhurandhar 320 Kbps.mp3",
+        "songs/Ishq Jalakar Dhurandhar 320 Kbps.mp3",
+        "songs/Don Omar - Danza Kuduro.mp3",
+        "songs/A Aa 2 Bgm.mp3",
+        "songs/Desabafo.mp3",
+        "songs/Hips don't lie.mp3",
+        "songs/Ho Jaane Do Aar Paar.mp3",
+        "songs/Kangana Tera Ni.mp3",
+        "songs/Let Me Love You.mp3",
+        "songs/Love Dose.mp3",
+        "songs/Telepathia.mp3",
+        "songs/Tokyo Drift.mp3",
+        "songs/Tokyo Drift.mp3",
+        "songs/See You Again.mp3"
+    ];
     //show all the song in the playlist
     let songUL = document
         .querySelector(".songlist ul");
@@ -200,7 +213,7 @@ async function main() {
 
     }
 
-   
+
     // add event listener to each li
     Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", Element => {
@@ -214,41 +227,41 @@ async function main() {
     })
 
     // add event listener to play and pause button
- const audio = document.getElementById("audioPlayer");
-const playBtn = document.querySelector(".play");
+    const audio = document.getElementById("audioPlayer");
+    const playBtn = document.querySelector(".play");
 
 
-// PLAY / PAUSE BUTTON
-playBtn.addEventListener("click", () => {
+    // PLAY / PAUSE BUTTON
+    playBtn.addEventListener("click", () => {
 
-  if (!audio.src) return;   // no song loaded yet
+        if (!audio.src) return;   // no song loaded yet
 
-  if (audio.paused) {
-    audio.play();
-    playBtn.src = "pause.svg";
-  } else {
-    audio.pause();
-    playBtn.src = "play.svg";
-  }
-});
+        if (audio.paused) {
+            audio.play();
+            playBtn.src = "pause.svg";
+        } else {
+            audio.pause();
+            playBtn.src = "play.svg";
+        }
+    });
 
 
-// CLICK SONG TO LOAD + PLAY
-Array.from(document.querySelectorAll(".songlist li")).forEach(li => {
+    // CLICK SONG TO LOAD + PLAY
+    Array.from(document.querySelectorAll(".songlist li")).forEach(li => {
 
-  li.addEventListener("click", () => {
+        li.addEventListener("click", () => {
 
-    let filename =
-      li.getElementsByTagName("div")[0]
-        .firstElementChild.innerHTML.trim();
+            let filename =
+                li.getElementsByTagName("div")[0]
+                    .firstElementChild.innerHTML.trim();
 
-    audio.src = "/songs/" + filename;
+            audio.src = "/songs/" + filename;
 
-    audio.play();
-    playBtn.src = "pause.svg";
-  });
+            audio.play();
+            playBtn.src = "pause.svg";
+        });
 
-});
+    });
 
 
 
